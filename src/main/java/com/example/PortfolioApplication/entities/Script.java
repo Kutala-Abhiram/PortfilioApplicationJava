@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -27,5 +28,7 @@ public class Script {
     List<ScriptTransactions> transactions;
     @OneToMany(mappedBy = "script")
     List<ScriptNotes> notes;
+    @ManyToMany(mappedBy = "portfolioScripts")
+    Set<Portfolio> portfolios;
 }
 

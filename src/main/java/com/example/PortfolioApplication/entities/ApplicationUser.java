@@ -25,4 +25,6 @@ public class ApplicationUser {
     List<ScriptTransactions> transactions;
     @OneToMany(mappedBy = "applicationUser")
     List<ScriptNotes> notes;
+    @OneToMany(mappedBy = "applicationUser")
+    List<Portfolio> portfolios;
 }
