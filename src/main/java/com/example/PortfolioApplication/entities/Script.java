@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name="script")
+@Table(name="script", uniqueConstraints = {@UniqueConstraint(columnNames = {"nseCode", "bseCode"})})
 public class Script {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
