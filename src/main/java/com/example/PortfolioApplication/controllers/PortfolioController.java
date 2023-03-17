@@ -1,6 +1,7 @@
 package com.example.PortfolioApplication.controllers;
 
 import com.example.PortfolioApplication.entities.Portfolio;
+import com.example.PortfolioApplication.models.AddScriptRequest;
 import com.example.PortfolioApplication.services.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,5 +25,10 @@ public class PortfolioController {
     @GetMapping("/portfolio/{id}")
     public Portfolio getPortfolio(final @PathVariable Long id) {
         return portfolioService.getPortfolio(id);
+    }
+
+    @PostMapping("/portfolio/{id}/scripts")
+    public Portfolio addScript(final @PathVariable Long id, final @RequestBody AddScriptRequest requestBody) {
+        return portfolioService.addScript(id, requestBody.getScriptId());
     }
 }

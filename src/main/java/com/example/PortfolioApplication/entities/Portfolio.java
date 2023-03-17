@@ -20,7 +20,7 @@ public class Portfolio {
     @ManyToOne
     @JoinColumn(name = "application_user_id")
     private ApplicationUser applicationUser;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="portfolio_scripts",
             joinColumns = @JoinColumn(name = "portfolio_id"),
