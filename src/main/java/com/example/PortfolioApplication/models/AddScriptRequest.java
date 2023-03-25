@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class AddScriptRequest {
-    private long scriptId;
+    private Long scriptId;
 }

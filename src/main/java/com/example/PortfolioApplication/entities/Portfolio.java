@@ -1,13 +1,20 @@
 package com.example.PortfolioApplication.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Entity
 @Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="portfolio")
 public class Portfolio {
     @Id
@@ -20,11 +27,6 @@ public class Portfolio {
     @ManyToOne
     @JoinColumn(name = "application_user_id")
     private ApplicationUser applicationUser;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name="portfolio_scripts",
-            joinColumns = @JoinColumn(name = "portfolio_id"),
-            inverseJoinColumns = @JoinColumn(name = "script_id")
-    )
-    Set<Script> portfolioScripts;
+    @OneToMany(mappedBy = "portfolio")
+    private List<PortfolioScripts> portfolioScripts = new ArrayList<>();
 }

@@ -1,6 +1,7 @@
 package com.example.PortfolioApplication.services;
 
 import com.example.PortfolioApplication.entities.Script;
+import com.example.PortfolioApplication.entities.ScriptNotes;
 import com.example.PortfolioApplication.repositories.ScriptRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

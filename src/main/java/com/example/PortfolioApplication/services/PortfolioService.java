@@ -18,7 +18,6 @@ public class PortfolioService {
     @Autowired
     ScriptService scriptService;
     public Portfolio createPortfolio(Portfolio portfolio) {
-        portfolio.setPortfolioScripts(new HashSet<>());
         return portfolioRepository.save(portfolio);
     }
 
@@ -29,13 +28,5 @@ public class PortfolioService {
     public Portfolio getPortfolio(long portfolioId) {
         return portfolioRepository.findById(portfolioId)
                 .orElseThrow(() -> new EntityNotFoundException("Portfolio not found"));
-    }
-
-    public Portfolio addScript(Long portfolioId, long scriptId) {
-        Portfolio portfolio = getPortfolio(portfolioId);
-        Set<Script> portfolioScripts = portfolio.getPortfolioScripts();
-        portfolioScripts.add(scriptService.getScript(scriptId));
-        portfolio.setPortfolioScripts(portfolioScripts);
-        return portfolioRepository.save(portfolio);
     }
 }
